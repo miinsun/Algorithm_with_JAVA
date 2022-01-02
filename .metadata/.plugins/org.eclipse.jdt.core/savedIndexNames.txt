@@ -1,0 +1,1 @@
+INDEX VERSION 1.131+C:\Users\home\Desktop\Algorithm\Algorithm_with_JAVA\.metadata\.plugins\org.eclipse.jdt.core
