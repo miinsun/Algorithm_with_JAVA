@@ -5,38 +5,35 @@ public class Main {
 	public int solution(String s) {
 		int answer = 0;
 		Stack<String> stack = new Stack<>();
-		String midform = "";
-		boolean isfirst = true;
 		//후위 계산식 -> 중위 계산식으로 바꾸기
 		for(char c : s.toCharArray()) {
 			if(!Character.isDigit(c)) {
-				if(isfirst) {
-					answer = Integer.parseInt(stack.pop());
-					isfirst = false;
-				}
+				int tmp = 0;
 				
+				int rt = Integer.parseInt(stack.pop());
+				int lt = Integer.parseInt(stack.pop());
+
 				switch(c) {
 				case '+':
-					answer += Integer.parseInt(stack.pop());
+					tmp = lt + rt;
 					break;
 				case '-':
-					answer -= Integer.parseInt(stack.pop());
+					tmp = lt - rt;
 					break;
 				case '*':
-					answer *= Integer.parseInt(stack.pop());
+					tmp = lt * rt;
 					break;
 				case '/':
-					answer /= Integer.parseInt(stack.pop());
+					tmp = lt / rt;
 					break;
 				}
+				stack.push(Integer.toString(tmp));
 			}
 			else {
 				stack.push(Character.toString(c));
 			}
-			System.out.println(stack.toString());
-			System.out.println("Answer is " + answer);
-
 		}
+		answer = Integer.parseInt(stack.pop());
         return answer;
 	}
 	

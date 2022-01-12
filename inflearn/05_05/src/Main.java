@@ -4,6 +4,31 @@ public class Main {
 
 	public int solution(String s) {
 		int answer = 0;
+		
+		s = s.replace("()", "*");
+		Stack<Character> stack = new Stack<>();
+		
+		int lazer = 0;
+		for(char c : s.toCharArray()) {
+			if (c == ')') {		
+				answer++;
+				while(stack.peek() != '(') {
+					answer++;
+					if(stack.peek() == '*') {
+						lazer++;
+					}
+					stack.pop();
+				}
+				stack.pop();
+				
+				for(int i = 0; i < lazer; i++)
+					stack.push('*');
+				lazer = 0;
+			}
+			else {
+				stack.push(c);
+			}
+		}
         return answer;
 	}
 	
