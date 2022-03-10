@@ -16,7 +16,6 @@ public class Main {
 				int nx =  cx + dx[i];
 				int ny = cy + dy[i];
 				
-				//갈 수 있는 경계선 지정
 				if(nx >= 0 && nx <= 6 && ny >= 0 && ny <= 6 && board[nx][ny] == 0) {
 					board[nx][ny] = 1;
 					DFS(nx, ny);
