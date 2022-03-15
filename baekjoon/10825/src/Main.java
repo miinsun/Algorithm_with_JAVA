@@ -4,7 +4,7 @@ import java.util.Collections;
 import java.util.Scanner;
 
 class Score implements Comparable<Score>{
-	public int korean, english, math, nameNum;
+	public int korean, english, math;
 	public String name;
 	
 	Score(int korean, int english, int math, String name){
