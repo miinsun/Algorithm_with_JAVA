@@ -1,21 +1,32 @@
-/* 백준 DP - 10844 :: 쉬운 계단 수 */
+/* 백준 DP - 11057 :: 오르막 수 */
 import java.util.Scanner;
 
 public class Main {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
 		int n = sc.nextInt();
-		int[] dy = new int[12];
+		int[][] dy = new int[n + 1][10];
 		
-		dy[0] = 0;
-		dy[1] = 9; 
-        
-		for(int i = 2; i <= n; i++) {
-			dy[i] = (2 * dy[i - 1] - 1);
+		for(int i = 0; i < 10; i++) {
+			dy[1][i] = 1;
 		}
 		
-		System.out.println(dy[n]);
-    	
+		for(int i = 2; i <= n; i++) {
+			for(int j = 0; j < 10; j++) {
+				for(int k = 0; k <= j; k++) {
+					dy[i][j] += dy[i - 1][k];
+					dy[i][j] = dy[i][j] % 10007;
+				}
+			}
+		}
+		
+		int total = 0;
+		for(int i : dy[n]) {
+			total += i;
+		}
+		
+		System.out.println(total % 10007);
+		
 		sc.close();
 	} 
 }
