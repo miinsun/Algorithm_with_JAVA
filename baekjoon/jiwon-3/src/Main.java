@@ -43,6 +43,14 @@ public class Main {
 		int dayNum = calendar.get(Calendar.DAY_OF_WEEK);
 		return dayNum;
 	}
+	
+	// 윤년 계산
+	public static boolean isLeapYear(int year) {
+        if (year % 4 == 0 && year % 100 != 0 || year % 400 == 0)
+            return true;
+        else
+            return false;
+    }
 
 	// 해당일 부터 일주일간을 출력해줌
 	public static int printOneWeek(int day, int month, int blank) {
@@ -132,6 +140,12 @@ public class Main {
 
 	// 4X3으로 3달씩 set로 출력
 	public static void printCalender(int year) {
+		// 윤년 검사
+		if(isLeapYear(year)) {
+			// 윤년이면 29일로 바꿔주기
+			dayData[1] = 29;
+		}
+		
 		for (int i = 1; i <= 10; i += 3) {
 			// 월, 요일 출력
 			printCalendarFrame(i);
